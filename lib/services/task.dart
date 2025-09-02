@@ -14,7 +14,7 @@ class TaskServices {
   }) async {
     http.Response response = await http.post(
       Uri.parse("$baseURL/todos/add"),
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', 'Authorization': token},
       body: jsonEncode({"description": description}),
     );
 

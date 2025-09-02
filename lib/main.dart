@@ -1,3 +1,4 @@
+import 'package:b16_api/providers/token.dart';
 import 'package:b16_api/providers/user.dart';
 import 'package:b16_api/views/login.dart';
 import 'package:b16_api/views/register.dart';
@@ -7,7 +8,10 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => UserProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProvider()),
+        ChangeNotifierProvider(create: (context) => TokenProvider()),
+      ],
       child: const MyApp(),
     ),
   );
