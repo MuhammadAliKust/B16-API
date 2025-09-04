@@ -3,6 +3,7 @@ import 'package:b16_api/services/task.dart';
 import 'package:b16_api/views/create_task.dart';
 import 'package:b16_api/views/get_completed_task.dart';
 import 'package:b16_api/views/get_in_completed_task.dart';
+import 'package:b16_api/views/search_task.dart';
 import 'package:b16_api/views/update_task.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -47,6 +48,17 @@ class _GetAllTaskViewState extends State<GetAllTaskView> {
               );
             },
             icon: Icon(Icons.incomplete_circle),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SearchTaskView(),
+                ),
+              );
+            },
+            icon: Icon(Icons.search),
           ),
         ],
       ),

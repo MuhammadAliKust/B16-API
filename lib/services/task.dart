@@ -39,6 +39,23 @@ class TaskServices {
     }
   }
 
+  ///Search Task
+  Future<TaskListingModel> searchTask({
+    required String token,
+    required String searchKeyword,
+  }) async {
+    http.Response response = await http.get(
+      Uri.parse("$baseURL/todos/search?keywords=$searchKeyword"),
+      headers: {'Authorization': token},
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return TaskListingModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw response.reasonPhrase.toString();
+    }
+  }
+
   ///Get Completed Task
   Future<TaskListingModel> getCompletedTask(String token) async {
     http.Response response = await http.get(
