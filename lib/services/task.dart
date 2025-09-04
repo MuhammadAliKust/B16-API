@@ -56,6 +56,24 @@ class TaskServices {
     }
   }
 
+  ///Filter Task
+  Future<TaskListingModel> filterTask({
+    required String token,
+    required String firstDate,
+    required String lastDate,
+  }) async {
+    http.Response response = await http.get(
+      Uri.parse("$baseURL/todos/filter?startDate=$firstDate&endDate=$lastDate"),
+      headers: {'Authorization': token},
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return TaskListingModel.fromJson(jsonDecode(response.body));
+    } else {
+      throw response.reasonPhrase.toString();
+    }
+  }
+
   ///Get Completed Task
   Future<TaskListingModel> getCompletedTask(String token) async {
     http.Response response = await http.get(

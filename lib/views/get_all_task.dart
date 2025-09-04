@@ -10,6 +10,7 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/token.dart';
+import 'filter_task.dart';
 
 class GetAllTaskView extends StatefulWidget {
   const GetAllTaskView({super.key});
@@ -59,6 +60,16 @@ class _GetAllTaskViewState extends State<GetAllTaskView> {
               );
             },
             icon: Icon(Icons.search),
+          ),   IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FilterTaskView(),
+                ),
+              );
+            },
+            icon: Icon(Icons.date_range),
           ),
         ],
       ),
